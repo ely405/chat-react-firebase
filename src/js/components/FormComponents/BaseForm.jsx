@@ -60,7 +60,7 @@ class BaseForm extends Component {
 
 	getElementClass = elementKey => `input ${elementKey}`;
 
-	getElementValue = elementKey => this.state.formData[elementKey] || ''; // no lo estoy usando
+	getElementValue = elementKey => this.state.formData[elementKey] || '';
 
 	getElementErrors = elementKey => this.state.errors[elementKey] || this.state.noError;
 

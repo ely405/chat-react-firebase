@@ -9,8 +9,6 @@ import { auth, db } from '../../firebase/index-firebase';
 
 import SignInLink from '../SignInPage/SignInLink.jsx';
 
-// import * as firebase from 'firebase';
-
 const propKey = (propertyName, value) => () => ({
 	[propertyName]: value,
 });
@@ -44,16 +42,13 @@ class SignUpForm extends Component {
     								alert('usuario actualizado');
     							}).catch((error) => {
     								this.setState(propKey('error', error));
-    								console.log('error', error);
     							});
     						})
     						.catch((error) => {
     							this.setState(propKey('error', error));
-    							console.log('error create ', error);
     						});
     				}).catch((error) => {
     					this.setState(propKey('error', error));
-    					console.log('state error', error);
     				});
     			},
     			handleBtnEnable: (err) => {

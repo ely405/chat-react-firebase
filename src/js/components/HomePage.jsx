@@ -20,7 +20,6 @@ class HomePage extends Component {
 	}
 }
 
-// comprueba que usuario no sea nulo
 const authCondition = authUser => authUser != null;
 
 export default WithAuthorization(authCondition)(HomePage);

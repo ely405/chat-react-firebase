@@ -19,17 +19,13 @@ const devConfig = {
 	storageBucket: firebaseConfig.development.STORAGE_BUCKET,
 	messagingSenderId: firebaseConfig.development.MESSAGING_SENDER_ID,
 };
-// verifica si es en producción o desarrollo
+
 const config = process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
 
-
-// inicializa la app
 if (!firebase.apps.length) {
 	firebase.initializeApp(config);
 }
 
-// inicializa el onjeto de autenticación
-// se usará en auth.js por eso se exporta
 const auth = firebase.auth();
 const db = firebase.database();
 

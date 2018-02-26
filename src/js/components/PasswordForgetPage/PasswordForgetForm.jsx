@@ -50,7 +50,6 @@ class PasswordForgetForm extends Component {
     			helpText: 'Ingresa tu correo',
     			validateOnChange: (value) => {
     				const isValid = { status: 'success', message: '' };
-    				// const regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     				const regex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
     				if (!regex.test(value.email)) {
     					isValid.status = 'error';

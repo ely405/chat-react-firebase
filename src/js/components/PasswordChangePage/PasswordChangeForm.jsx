@@ -26,7 +26,7 @@ class PasswordChangeForm extends Component {
 					e.preventDefault();
 					const { passOne, passTwo } = formData;
     				auth.toPasswordChange(passOne).then(() => {
-						alert('cambia mi contraseña');
+						alert('Haz cambiado tu contraseña');
     				}).catch((error) => {
 						this.setState(setNewState('error', error));
     				});

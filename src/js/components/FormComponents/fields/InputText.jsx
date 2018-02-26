@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Col, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
 
 const InputText = props => (
-	// <Col md={props.size}>
 	<FormGroup
 		validationState={props.error.status}
 	>
@@ -23,7 +22,6 @@ const InputText = props => (
 		<FormControl.Feedback />
 		<HelpBlock>{props.error.message}</HelpBlock>
 	</FormGroup>
-	// </Col>
 );
 
 export default InputText;
