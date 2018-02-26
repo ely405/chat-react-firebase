@@ -1,0 +1,23 @@
+{
+    "parser": "babel-eslint",
+    "plugins": [
+        "react"
+    ],
+    "extends": ["airbnb-base"],
+    "rules": {
+        "no-unused-vars": 0,
+        "max-len": [1, 150, 2, {"ignoreComments": true}],
+        "linebreak-style": ["error", "windows"],
+        "indent": [2, "tab"],
+        "no-tabs": 0,
+        "eol-last": ["error", "never"],
+        "no-mixed-spaces-and-tabs": 0,
+        "no-unused-expressions": [2, { "allowTernary": true, "allowShortCircuit": true }]
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "serviceworker": true
+    }
+}
+
