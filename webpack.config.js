@@ -3,8 +3,7 @@ const webpack = require('webpack');
 const combineLoaders = require('webpack-combine-loaders');
 
 module.exports = {
-	// devtool: 'inline-source-map',
-	devtool: 'eval-source-map',
+	// devtool: 'eval-source-map',
 	entry: [
 		'react-hot-loader/patch',
 		'./src/js/index.js',
@@ -23,16 +22,11 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				// exclude: /node_modules/,
 				loader: combineLoaders([
 					{
 					  loader: 'style-loader',
 					}, {
 					  loader: 'css-loader',
-					  query: {
-							// modules: true,
-							// localIdentName: '[name]__[local]___[hash:base64:5]',
-					  },
 					},
 				  ]),
 			},
@@ -48,7 +42,6 @@ module.exports = {
 								progressive: true,
 								quality: 65,
 					  },
-					  // optipng.enabled: false will disable optipng
 					  optipng: {
 								enabled: false,
 					  },
@@ -59,7 +52,6 @@ module.exports = {
 					  gifsicle: {
 								interlaced: false,
 					  },
-					  // the webp option will enable WEBP
 					  webp: {
 								quality: 75,
 					  },
@@ -84,7 +76,6 @@ module.exports = {
 			$: 'jquery',
 			jquery: 'jquery',
 		}),
-		// new ExtractTextPlugin('style.min.css', { allChunks: true }),
 	],
 	devServer: {
 		contentBase: './dist',

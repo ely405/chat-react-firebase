@@ -16,6 +16,8 @@ import WithAuthentication from './components/HOC/WithAuthentication.jsx';
 
 import './app.css';
 
+import favicon from '../img/favicon.png';
+
 class App extends Component {
 	render() {
 		const { authUser } = this.props;

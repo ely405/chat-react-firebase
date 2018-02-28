@@ -23,7 +23,7 @@ class SignUpForm extends Component {
 
     signUpElements = () => {
     	const signUpElem = {
-    		title: 'Hola! REgístrate :)',
+    		title: 'Hola! Regístrate :)',
     		button: {
     			id: 'btnSignUp',
     			label: 'Regístrate',
