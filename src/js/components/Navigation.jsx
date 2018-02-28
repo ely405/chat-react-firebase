@@ -33,7 +33,7 @@ const NavigationNonAuth = () => (
 	<Navbar collapseOnSelect fixedTop={true} className='bg-white'>
 		<Navbar.Header>
 			<Navbar.Brand>
-				<Link to={routes.LANDING}>CHAT</Link>
+				<Link to={routes.LANDING}><Glyphicon glyph='envelope'/> CHAT</Link>
 			</Navbar.Brand>
 			<Navbar.Toggle />
 		</Navbar.Header>
