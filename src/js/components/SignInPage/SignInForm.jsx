@@ -42,7 +42,7 @@ class SignInForm extends Component {
 
 					auth.getCurrentUser((user) => {
 						if (user) {
-						  db.saveConnectedUsersDb(user.uid, { userEmail, username: user.displayName });
+						  db.saveConnectedUsersDb(user.uid, { userEmail, username: user.displayName, uid: user.uid });
 						}
 					});
 

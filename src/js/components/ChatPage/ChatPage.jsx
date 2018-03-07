@@ -5,7 +5,10 @@ import { Grid } from 'react-bootstrap';
 import Chat from './chatComponents/Chat.jsx';
 import withAutorization from '../HOC/WithAuthorization.jsx';
 
+import { auth } from '../../firebase/index-firebase';
+
 class AccountPage extends Component {
+
 	render() {
 		const { authUser } = this.props;
 		return (

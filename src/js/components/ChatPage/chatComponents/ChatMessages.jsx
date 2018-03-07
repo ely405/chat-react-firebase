@@ -48,6 +48,8 @@ class ChatMessages extends Component {
 					message={messages[i].text}
 					fromMe={fromMe}
 					messageHour={messages[i].messageHour}
+					//
+					imgURL={messages[i].imgURL}
 				/>;
 			});
 		}

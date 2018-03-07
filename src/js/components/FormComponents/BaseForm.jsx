@@ -8,7 +8,7 @@ import setNewState from '../../utils/setNewStateFunction';
 class BaseForm extends Component {
 	constructor(props) {
 		super(props);
-		this.title = this.props.title || 'FORMULARIO BASE';
+		this.title = this.props.title;
 		this.onSubmitForm = this.props.onSubmitForm;
 		this.buttonLabel = this.props.buttonLabel || 'OK';
 		this.state = {
@@ -98,7 +98,7 @@ class BaseForm extends Component {
 		const { errorOnSubmit } = this.props;
     	return (
     		<form onSubmit={e => this.onSubmitForm(e, this.state.formData)}>
-    			<h6>{this.props.title || 'FORMULARIO BASE'}</h6>
+    			<h6>{this.props.title}</h6>
 				{allBoxes}
 				<button
 					id={this.props.buttonId}

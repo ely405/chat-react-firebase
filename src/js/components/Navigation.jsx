@@ -8,7 +8,7 @@ import SignOutButton from './SIgnOutButton.jsx';
 
 import './navigation.css';
 
-const NavigationAuth = () => (
+const NavigationAuth = props => (
 	<Navbar collapseOnSelect fixedTop={true} className='bg-white'>
 		<Navbar.Header>
 			<Navbar.Brand>
@@ -23,7 +23,7 @@ const NavigationAuth = () => (
 				<NavItem componentClass="span"><Link to={routes.CHAT} className='c-black'>Chat</Link></NavItem>
 			</Nav>
 			<Nav pullRight>
-				<NavItem componentClass="span"><SignOutButton/></NavItem>
+				<NavItem componentClass="span"><SignOutButton authUserId={props.authUserId}/></NavItem>
 			</Nav>
 		</Navbar.Collapse>
 	</Navbar>
@@ -56,7 +56,7 @@ class Navigation extends Component {
 		const { authUser } = this.props;
 		return (
 			<div>
-				{authUser ? <NavigationAuth/> : <NavigationNonAuth/> }
+				{authUser ? <NavigationAuth authUserId={authUser.uid}/> : <NavigationNonAuth/> }
 			</div>
 		);
 	}

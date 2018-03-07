@@ -2,8 +2,11 @@ const path = require('path');
 const webpack = require('webpack');
 const combineLoaders = require('webpack-combine-loaders');
 
+const debug = process.env.NODE_ENV !== 'production';
+
 module.exports = {
-	devtool: 'eval-source-map',
+	// devtool: 'eval-source-map',
+	devtool: debug ? 'inline-sourcemap' : null,
 	entry: [
 		'react-hot-loader/patch',
 		'./src/js/index.js',
@@ -42,13 +45,25 @@ module.exports = {
 		publicPath: '/',
 		filename: 'bundle.js',
 	},
-	plugins: [
+	// plugins: [
+	// 	new webpack.HotModuleReplacementPlugin(),
+	// 	new webpack.ProvidePlugin({
+	// 		jQuery: 'jquery',
+	// 		$: 'jquery',
+	// 		jquery: 'jquery',
+	// 	}),
+	// ],
+	plugins: debug ? [
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.ProvidePlugin({
 			jQuery: 'jquery',
 			$: 'jquery',
 			jquery: 'jquery',
 		}),
+	] : [
+		new webpack.optimize.DedupePlugin(),
+		new webpack.optimize.OccurenceOrderPlugin(),
+		new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
 	],
 	devServer: {
 		contentBase: './dist',

@@ -4,11 +4,13 @@ import { Col } from 'react-bootstrap';
 
 const Message = (props) => {
 	const smsFromMe = props.fromMe ? 'FromMe' : '';
+	const img = props.imgURL ? <img src={props.imgURL} className='col-xs-10'/> : '';
 	let component;
 	if (props.fromMe) {
 		component = <Col className={`message${smsFromMe} media-heading pull-right flex-col`} xsOffset={3} >
 			<strong className='progress-bar'>{props.username}</strong>
 			<div className={' flex-ali-end space-betw'}>
+				{img}
 				<p className='nav'>{props.message}</p>
 				<small className='media-right'>{props.messageHour}</small>
 			</div>
@@ -17,6 +19,7 @@ const Message = (props) => {
 		component = <Col className='message media-heading m-r-25pr pull-left flex-col'>
 			<strong className='progress-bar'>{props.username}</strong>
 			<div className='flex-ali-end space-betw'>
+				{img}
 				<p className='nav'>{props.message}</p>
 				<small className='media-right'>{props.messageHour}</small>
 			</div>

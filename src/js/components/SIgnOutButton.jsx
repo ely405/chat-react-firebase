@@ -7,4 +7,5 @@ const SignOutButton = () => (
 		className='c-black'
 	>Cerrar sesión</a>
 );
+
 export default SignOutButton;
