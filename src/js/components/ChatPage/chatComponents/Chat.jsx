@@ -15,7 +15,7 @@ class Chat extends Component {
 			lastMessage: '',
 			messageCount: 0,
 			files: '',
-			progress: 0,
+			loading: false,
 		};
 	}
 
@@ -26,9 +26,7 @@ class Chat extends Component {
 
 	handleSubmitMessage = (e) => {
 		e.preventDefault();
-		const {
-			lastMessage, files, progress,
-		} = this.state;
+		const {	lastMessage, files } = this.state;
 		const { username, userId } = this.props;
 
 		const dateFormat = new Date();
@@ -45,21 +43,29 @@ class Chat extends Component {
 			text: lastMessage,
 			messageDate: `${day}/${month + 1}/${year}`,
 			messageHour: `${hour}:${minute}:${seconds}`,
-			progress,
 		};
 
 		if (files) {
 			const uploadTask = st.uploadFile(files[0], files[0].name);
+			// then((snapshot) => {
+			// 	newMessage.imgURL = snapshot.downloadURL;
+			// 	this.setState({ loaded: true });
+			// 	console.log('uploadFile', snapshot.downloadURL);
+			// 	console.log('newMessage', newMessage)
+			// 	db.saveUserMessage(newMessage, userId, userId);
+			// }).catch(err => console.log('error', err));
 
 			uploadTask.on('state_changed', (snapshot) => {
-				const progressPer = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-				this.setState({ progress: progressPer });
-				console.log(`Upload is ${progressPer}% done`, this.state);
+				// const progressPer = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+				this.setState({ loading: true });
+				// console.log(`Upload is ${progressPer}% done`, this.state);
 			}, (err) => {
 				console.log('error al subir', err);
+				this.setState({ loading: false });
 			}, () => {
 				const { downloadURL } = uploadTask.snapshot;
 				newMessage.imgURL = downloadURL;
+				this.setState({ loading: false });
 				db.saveUserMessage(newMessage, userId, userId);
 			});
 
@@ -79,6 +85,9 @@ class Chat extends Component {
 
 	render() {
 		const { userId, username } = this.props;
+		const { loading } = this.state;
+
+		const loader = loading ? `esta cargando ${loading}` : '';
 		return (
 			<div className='chatBox'>
 				<h1>Chat {username}</h1>
@@ -90,6 +99,7 @@ class Chat extends Component {
 					handleSubmitMessage={this.handleSubmitMessage}
 					handleUpLoad={this.handleUpLoad}
 				/>
+				<p>{loader}</p>
 			</div>
 		);
 	}
