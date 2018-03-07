@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import uuidv4 from 'uuid/v4';
+import $ from 'jquery';
 import { auth, db, st } from '../../../firebase/index-firebase';
 
 import ChatMessages from './ChatMessages.jsx';
@@ -14,8 +15,9 @@ class Chat extends Component {
 		this.state = {
 			lastMessage: '',
 			messageCount: 0,
-			files: '',
+			file: '',
 			loading: false,
+			imgSrc: '',
 		};
 	}
 
@@ -26,7 +28,7 @@ class Chat extends Component {
 
 	handleSubmitMessage = (e) => {
 		e.preventDefault();
-		const {	lastMessage, files } = this.state;
+		const {	lastMessage, file } = this.state;
 		const { username, userId } = this.props;
 
 		const dateFormat = new Date();
@@ -45,8 +47,8 @@ class Chat extends Component {
 			messageHour: `${hour}:${minute}:${seconds}`,
 		};
 
-		if (files) {
-			const uploadTask = st.uploadFile(files[0], files[0].name);
+		if (file) {
+			const uploadTask = st.uploadFile(file, `${file.name}${uuidv4()}`);
 			// then((snapshot) => {
 			// 	newMessage.imgURL = snapshot.downloadURL;
 			// 	this.setState({ loaded: true });
@@ -56,16 +58,14 @@ class Chat extends Component {
 			// }).catch(err => console.log('error', err));
 
 			uploadTask.on('state_changed', (snapshot) => {
-				// const progressPer = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
 				this.setState({ loading: true });
-				// console.log(`Upload is ${progressPer}% done`, this.state);
 			}, (err) => {
 				console.log('error al subir', err);
 				this.setState({ loading: false });
 			}, () => {
 				const { downloadURL } = uploadTask.snapshot;
 				newMessage.imgURL = downloadURL;
-				this.setState({ loading: false });
+				this.setState({ loading: false, imgSrc: '' });
 				db.saveUserMessage(newMessage, userId, userId);
 			});
 
@@ -75,31 +75,39 @@ class Chat extends Component {
 		} else {
 			db.saveUserMessage(newMessage, userId, userId);
 		}
-		this.setState({ lastMessage: '', user: '', files: '' });
+		this.setState({ lastMessage: '', user: '', file: '' });
 	}
 
-	handleUpLoad = (e) => {
-		this.setState({ files: e.target.files });
-		console.log('file', e.target.value);
+	handleUpLoad = (e, file) => {
+		const fileToUp = file || e.target.files[0];
+		const reader = new FileReader();
+		this.setState({ file: fileToUp });
+		reader.onload = () => {
+			this.setState({
+				imgSrc: reader.result,
+			});
+		};
+		reader.readAsDataURL(fileToUp);
 	}
 
 	render() {
 		const { userId, username } = this.props;
 		const { loading } = this.state;
+		const loader = loading ? 'cargando...' : '';
 
-		const loader = loading ? `esta cargando ${loading}` : '';
 		return (
 			<div className='chatBox'>
 				<h1>Chat {username}</h1>
 				<ChatMessages userId={userId}/>
+				<p>{loader}</p>
 				<InputMessageChat
 					onSend={this.handleSendMessage}
 					chatInputValue={this.state.lastMessage}
 					handleChangeInput={this.updateLastMessage}
 					handleSubmitMessage={this.handleSubmitMessage}
 					handleUpLoad={this.handleUpLoad}
+					imgSrc={this.state.imgSrc}
 				/>
-				<p>{loader}</p>
 			</div>
 		);
 	}
