@@ -18,6 +18,7 @@ class Chat extends Component {
 			file: '',
 			loading: false,
 			imgSrc: '',
+			error: null,
 		};
 	}
 
@@ -48,26 +49,28 @@ class Chat extends Component {
 		};
 
 		if (file) {
-			const uploadTask = st.uploadFile(file, `${file.name}${uuidv4()}`);
-			// then((snapshot) => {
-			// 	newMessage.imgURL = snapshot.downloadURL;
-			// 	this.setState({ loaded: true });
-			// 	console.log('uploadFile', snapshot.downloadURL);
-			// 	console.log('newMessage', newMessage)
-			// 	db.saveUserMessage(newMessage, userId, userId);
-			// }).catch(err => console.log('error', err));
-
-			uploadTask.on('state_changed', (snapshot) => {
-				this.setState({ loading: true });
-			}, (err) => {
-				console.log('error al subir', err);
-				this.setState({ loading: false });
-			}, () => {
-				const { downloadURL } = uploadTask.snapshot;
-				newMessage.imgURL = downloadURL;
+			this.setState({ loading: true });
+			st.uploadFile(file, `${file.name}${uuidv4()}`).then((snapshot) => {
+				newMessage.imgURL = snapshot.downloadURL;
 				this.setState({ loading: false, imgSrc: '' });
 				db.saveUserMessage(newMessage, userId, userId);
+			}).catch((err) => {
+				console.log('error al subir', err);
+				this.setState({ error: err });
 			});
+
+			// const uploadTask = st.uploadFile(file, `${file.name}${uuidv4()}`);
+			// uploadTask.on('state_changed', (snapshot) => {
+			// 	this.setState({ loading: true });
+			// }, (err) => {
+			// 	console.log('error al subir', err);
+			// 	this.setState({ loading: false });
+			// }, () => {
+			// 	const { downloadURL } = uploadTask.snapshot;
+			// 	newMessage.imgURL = downloadURL;
+			// 	this.setState({ loading: false, imgSrc: '' });
+			// 	db.saveUserMessage(newMessage, userId, userId);
+			// });
 
 			if (newMessage.imgURL) {
 				db.saveUserMessage(newMessage, userId, userId);
@@ -92,7 +95,7 @@ class Chat extends Component {
 
 	render() {
 		const { userId, username } = this.props;
-		const { loading } = this.state;
+		const { loading, imgSrc, error } = this.state;
 		const loader = loading ? 'cargando...' : '';
 
 		return (
@@ -100,13 +103,14 @@ class Chat extends Component {
 				<h1>Chat {username}</h1>
 				<ChatMessages userId={userId}/>
 				<p>{loader}</p>
+				{error ? <p>error</p> : ''}
 				<InputMessageChat
 					onSend={this.handleSendMessage}
 					chatInputValue={this.state.lastMessage}
 					handleChangeInput={this.updateLastMessage}
 					handleSubmitMessage={this.handleSubmitMessage}
 					handleUpLoad={this.handleUpLoad}
-					imgSrc={this.state.imgSrc}
+					imgSrc={imgSrc}
 				/>
 			</div>
 		);
