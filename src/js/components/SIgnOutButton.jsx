@@ -4,7 +4,7 @@ import { auth } from '../firebase/index-firebase';
 const SignOutButton = () => (
 	<a
 		onClick={auth.toCloseSession}
-		className='c-black'
+		className='c-with'
 	>Cerrar sesión</a>
 );
 

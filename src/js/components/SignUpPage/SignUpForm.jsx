@@ -147,7 +147,7 @@ class SignUpForm extends Component {
 
     render() {
     	return (
-    		<Row>
+    		<Row className='container-fluid'>
     			<Col md={4} mdOffset={4}>
     				<h3 className='pager'>Regístrate</h3>
     				<BaseForm

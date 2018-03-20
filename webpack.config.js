@@ -5,7 +5,6 @@ const combineLoaders = require('webpack-combine-loaders');
 const debug = process.env.NODE_ENV !== 'production';
 
 module.exports = {
-	// devtool: 'eval-source-map',
 	devtool: debug ? 'inline-sourcemap' : null,
 	entry: [
 		'react-hot-loader/patch',

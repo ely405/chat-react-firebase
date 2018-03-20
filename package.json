@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --watch",
     "dev": "webpack-dev-server --progress --colors --config ./webpack.config.js",
-    "start": "webpack-dev-server --progress --colors --config ./webpack.config.js -p --env.production --env.platform=web"  
+    "start": "webpack-dev-server --progress --colors --config ./webpack.config.js -p --env.production --env.platform=web",
+    "deploy": "firebase deploy"
   },
   "author": "ely",
   "license": "ISC",

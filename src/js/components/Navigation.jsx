@@ -9,7 +9,7 @@ import SignOutButton from './SIgnOutButton.jsx';
 import './navigation.css';
 
 const NavigationAuth = props => (
-	<Navbar collapseOnSelect fixedTop={true} className='bg-white'>
+	<Navbar collapseOnSelect fixedTop={true} className='bg-turquoise'>
 		<Navbar.Header>
 			<Navbar.Brand>
 				<a href="/"> <Glyphicon glyph='envelope'/>  CHAT</a>
@@ -18,9 +18,9 @@ const NavigationAuth = props => (
 		</Navbar.Header>
 		<Navbar.Collapse>
 			<Nav>
-				<NavItem componentClass="span"><Link to={routes.LANDING} className='c-black'>Inicio</Link></NavItem>
-				<NavItem componentClass="span"><Link to={routes.HOME} className='c-black'>Home</Link></NavItem>
-				<NavItem componentClass="span"><Link to={routes.CHAT} className='c-black'>Chat</Link></NavItem>
+				<NavItem componentClass="span"><Link to={routes.LANDING} className='c-white'>Inicio</Link></NavItem>
+				<NavItem componentClass="span"><Link to={routes.HOME} className='c-white'>Home</Link></NavItem>
+				<NavItem componentClass="span"><Link to={routes.CHAT} className='c-white'>Chat</Link></NavItem>
 			</Nav>
 			<Nav pullRight>
 				<NavItem componentClass="span"><SignOutButton authUserId={props.authUserId}/></NavItem>
@@ -30,22 +30,22 @@ const NavigationAuth = props => (
 );
 
 const NavigationNonAuth = () => (
-	<Navbar collapseOnSelect fixedTop={true} className='bg-white'>
+	<Navbar collapseOnSelect fixedTop={true} className='bg-turquoise'>
 		<Navbar.Header>
 			<Navbar.Brand>
-				<Link to={routes.LANDING}><Glyphicon glyph='envelope'/> CHAT</Link>
+				<Link to={routes.LANDING} className='c-white'><Glyphicon glyph='envelope'/> CHAT</Link>
 			</Navbar.Brand>
 			<Navbar.Toggle />
 		</Navbar.Header>
 		<Navbar.Collapse>
 			<Nav>
-				<NavItem componentClass="span"><Link to={routes.LANDING} className='c-black'>Inicio</Link></NavItem>
-				<NavItem componentClass="span"><Link to={routes.HOME} className='c-black'>Home</Link></NavItem>
-				<NavItem componentClass="span"><Link to={routes.CHAT} className='c-black'>Chat</Link></NavItem>
+				<NavItem componentClass="span"><Link to={routes.LANDING} className='c-white'>Inicio</Link></NavItem>
+				<NavItem componentClass="span"><Link to={routes.HOME} className='c-white'>Home</Link></NavItem>
+				<NavItem componentClass="span"><Link to={routes.CHAT} className='c-white'>Chat</Link></NavItem>
 			</Nav>
 			<Nav pullRight>
-				<NavItem componentClass="span"><Link to={routes.SIGN_UP} className='c-black'>Regístrate</Link></NavItem>
-				<NavItem componentClass="span"><Link to={routes.SIGN_IN} className='c-black'>Inicia sesión</Link></NavItem>
+				<NavItem componentClass="span"><Link to={routes.SIGN_UP} className='c-white'>Regístrate</Link></NavItem>
+				<NavItem componentClass="span"><Link to={routes.SIGN_IN} className='c-white'>Inicia sesión</Link></NavItem>
 			</Nav>
 		</Navbar.Collapse>
 	</Navbar>

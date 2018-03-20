@@ -1,6 +1,7 @@
-.backgroundCarousel{
+.back-parallax{
+    height: 100%; 
+    background-attachment: fixed;
+    background-position: center;
     background-repeat: no-repeat;
-    background-position: 58.5% 0%;
-    height: 400px;
     background-size: cover;
 }

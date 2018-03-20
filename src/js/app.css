@@ -2,8 +2,12 @@
     background-color: #FFF;
 }
 
-.c-black{
-    color: black;
+.bg-turquoise{
+    background-color: #5BC4B5;
+}
+
+.c-white{
+    color: white;
 }
 
 .p-0{
@@ -47,12 +51,14 @@
     outline: 0;
     padding: 10px;
     border: none;
-    /* background-color: #FFF; */
     border: 1px solid #DEE2E2;
     resize: none;
     color: #777;
 }
 
+body {
+    background-color: #C6ECE1;
+}
 @media (max-width: 768px) {
     .detail-container{
         flex-direction: column;
