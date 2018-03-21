@@ -147,8 +147,8 @@ class SignUpForm extends Component {
 
     render() {
     	return (
-    		<Row className='container-fluid'>
-    			<Col md={4} mdOffset={4}>
+    		<Row className='container-fluid flex-ali-center d-flex'>
+    			<Col md={4} >
     				<h3 className='pager'>Regístrate</h3>
     				<BaseForm
     					title={this.signUpElements().title}

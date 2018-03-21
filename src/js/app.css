@@ -1,3 +1,12 @@
+:root {
+    --main-bg-color: #C6ECE1; 
+}
+
+body {
+    background-color: var(--main-bg-color);
+}
+
+
 .bg-white{
     background-color: #FFF;
 }
@@ -15,7 +24,7 @@
 }
 
 .containerApp{
-    padding-top: 50px;
+    padding-top: 40px;
 }
 
 .d-flex{
@@ -56,9 +65,6 @@
     color: #777;
 }
 
-body {
-    background-color: #C6ECE1;
-}
 @media (max-width: 768px) {
     .detail-container{
         flex-direction: column;
