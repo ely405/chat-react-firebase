@@ -13,7 +13,8 @@
 }
 
 .messageFromMe{
-    min-width: 26%;  
+    min-width: 26%;
+    max-width: 90%;
 }
 .messageFromMe>div{
     background: #89E54D;
@@ -22,8 +23,17 @@
 
 .message{
     min-width: 26%;
+    max-width: 90%;
 }
 .message>div{
     border-radius:5px;
     background-color: #FFFFFF;
+}
+
+.img-message{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 20vh;
+    width: 20vh;
 }

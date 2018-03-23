@@ -4,32 +4,6 @@ import { Col } from 'react-bootstrap';
 
 import ImagesModal from './ImagesModal.jsx';
 
-// const Message = (props) => {
-// 	const smsFromMe = props.fromMe ? 'FromMe' : '';
-// 	const img = props.imgURL ? <img src={props.imgURL} className='col-xs-10'/> : '';
-// 	let component;
-// 	if (props.fromMe) {
-// 		component = <Col className={`message${smsFromMe} media-heading pull-right d-flex flex-col`} xsOffset={3} >
-// 			<strong className='progress-bar'>{props.username}</strong>
-// 			<div className={' flex-ali-end space-betw modal-footer'}>
-// 				{img}
-// 				<p className='nav'>{props.message}</p>
-// 				<small className='media-right'>{props.messageHour}</small>
-// 			</div>
-// 		</Col>;
-// 	} else {
-// 		component = <Col className='message media-heading m-r-25pr pull-left d-flex flex-col'>
-// 			<strong className='progress-bar'>{props.username}</strong>
-// 			<div className='flex-ali-end space-betw modal-footer'>
-// 				{img}
-// 				<p className='nav'>{props.message}</p>
-// 				<small className='media-right'>{props.messageHour}</small>
-// 			</div>
-// 		</Col>;
-// 	}
-// 	return (component);
-// };
-
 class Message extends Component {
 	constructor(props) {
 		super(props);
@@ -51,8 +25,7 @@ class Message extends Component {
 			fromMe, imgURL, username, message, messageHour,
 		} = this.props;
 		const smsFromMe = fromMe ? 'FromMe' : '';
-		const img = imgURL ? <img src={imgURL} className='col-xs-10' onClick={this.handleShowModal} /> : '';
-		// const img = imgURL ? <img src={imgURL} className='col-xs-10' data-toggle="modal" data-target=".bs-example-modal-lg"/> : '';
+		const img = imgURL ? <div className="img-message" onClick={this.handleShowModal} style={{ backgroundImage: `url('${imgURL}')` }}></div> : '';
 		let component;
 		if (fromMe) {
 			component = <Col className={`message${smsFromMe} media-heading pull-right d-flex flex-col`} xsOffset={3} >
