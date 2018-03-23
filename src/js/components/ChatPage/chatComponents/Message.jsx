@@ -9,7 +9,7 @@ const Message = (props) => {
 	if (props.fromMe) {
 		component = <Col className={`message${smsFromMe} media-heading pull-right d-flex flex-col`} xsOffset={3} >
 			<strong className='progress-bar'>{props.username}</strong>
-			<div className={' flex-ali-end space-betw'}>
+			<div className={' flex-ali-end space-betw modal-footer'}>
 				{img}
 				<p className='nav'>{props.message}</p>
 				<small className='media-right'>{props.messageHour}</small>
@@ -18,7 +18,7 @@ const Message = (props) => {
 	} else {
 		component = <Col className='message media-heading m-r-25pr pull-left d-flex flex-col'>
 			<strong className='progress-bar'>{props.username}</strong>
-			<div className='flex-ali-end space-betw'>
+			<div className='flex-ali-end space-betw modal-footer'>
 				{img}
 				<p className='nav'>{props.message}</p>
 				<small className='media-right'>{props.messageHour}</small>

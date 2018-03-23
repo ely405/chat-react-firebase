@@ -86,7 +86,8 @@ class Chat extends Component {
 
 		return (
 			<div className='chatBox'>
-				<h1>Chat {username}</h1>
+				<h1>Chat</h1>
+				<p>{username}</p>
 				<ChatMessages userId={userId}/>
 				<p>{loader}</p>
 				{error ? <p>error</p> : ''}
