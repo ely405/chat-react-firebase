@@ -40,16 +40,19 @@ class Message extends Component {
 
 	handleCloseModal = () => {
     	this.setState({ show: false });
-    }
+	}
 
 	handleShowModal = () => {
 		this.setState({ show: true });
 	}
 
 	render() {
-		const { fromMe, imgURL, username, message, messageHour } = this.props;
+		const {
+			fromMe, imgURL, username, message, messageHour,
+		} = this.props;
 		const smsFromMe = fromMe ? 'FromMe' : '';
-		const img = imgURL ? <img src={imgURL} className='col-xs-10' onClick={this.handleShowModal}/> : '';
+		const img = imgURL ? <img src={imgURL} className='col-xs-10' onClick={this.handleShowModal} /> : '';
+		// const img = imgURL ? <img src={imgURL} className='col-xs-10' data-toggle="modal" data-target=".bs-example-modal-lg"/> : '';
 		let component;
 		if (fromMe) {
 			component = <Col className={`message${smsFromMe} media-heading pull-right d-flex flex-col`} xsOffset={3} >
@@ -59,7 +62,7 @@ class Message extends Component {
 					<p className='nav'>{message}</p>
 					<small className='media-right'>{messageHour}</small>
 				</div>
-				<ImagesModal showModal={this.state.show} closeModal={this.handleCloseModal} imgURL={imgURL}/>				
+				<ImagesModal showModal={this.state.show} closeModal={this.handleCloseModal} imgURL={imgURL}/>
 			</Col>;
 		} else {
 			component = <Col className='message media-heading m-r-25pr pull-left d-flex flex-col'>
