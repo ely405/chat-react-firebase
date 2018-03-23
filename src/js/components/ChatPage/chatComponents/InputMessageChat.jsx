@@ -9,7 +9,7 @@ const InputMessageChat = (props) => {
 	const imageOrText = props.imgSrc ? <img src={props.imgSrc} className='col-xs-8' alt=""/> : <Textarea
 		id='textMessage'
 		rows="1"
-		className="textarea col-xs-9 bg-white"
+		className="textarea col-xs-10 bg-white"
 		placeholder="Escribe un mensaje"
 		onChange={e => props.handleChangeInput(e)}
 		value={props.chatInputValue}

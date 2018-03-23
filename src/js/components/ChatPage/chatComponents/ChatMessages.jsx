@@ -48,7 +48,6 @@ class ChatMessages extends Component {
 					message={messages[i].text}
 					fromMe={fromMe}
 					messageHour={messages[i].messageHour}
-					//
 					imgURL={messages[i].imgURL}
 				/>;
 			});
@@ -60,7 +59,7 @@ class ChatMessages extends Component {
 			component = allMessages;
 		 } else {
 			component = <div className='d-flex flex-ali-center' id='messageList'>
-				<Loader type="Oval" color="#FFF" height={100} width={100} className='loader'/>;
+				<Loader type="Oval" color="#FFF" height={35} width={35} className='loader'/>;
 			</div>;
 		 }
 

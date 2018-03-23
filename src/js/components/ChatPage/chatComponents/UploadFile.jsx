@@ -4,8 +4,8 @@ import { Col, Glyphicon, OverlayTrigger, Popover, Button } from 'react-bootstrap
 
 
 const UploadFile = props => (
-	<Col xs={2}>
-		<label htmlFor="imageUpload" id='btnAttachFile' className="btn btn-primary btn-outlined"><Glyphicon glyph="paperclip"/></label>
+	<span>
+		<label htmlFor="imageUpload" id='btnAttachFile' className="btn btn-primary btn-outlined col-xs-1"><Glyphicon glyph="paperclip"/></label>
 		<input
 			id='imageUpload'
 			type="file"
@@ -13,7 +13,7 @@ const UploadFile = props => (
 			style={{ display: 'none' }}
 			accept="image/*"
 		/>
-	</Col>
+	</span>
 );
 
 

@@ -58,20 +58,6 @@ class Chat extends Component {
 				console.log('error al subir', err);
 				this.setState({ error: err });
 			});
-
-			// const uploadTask = st.uploadFile(file, `${file.name}${uuidv4()}`);
-			// uploadTask.on('state_changed', (snapshot) => {
-			// 	this.setState({ loading: true });
-			// }, (err) => {
-			// 	console.log('error al subir', err);
-			// 	this.setState({ loading: false });
-			// }, () => {
-			// 	const { downloadURL } = uploadTask.snapshot;
-			// 	newMessage.imgURL = downloadURL;
-			// 	this.setState({ loading: false, imgSrc: '' });
-			// 	db.saveUserMessage(newMessage, userId, userId);
-			// });
-
 			if (newMessage.imgURL) {
 				db.saveUserMessage(newMessage, userId, userId);
 			}
