@@ -7,7 +7,7 @@ const Message = (props) => {
 	const img = props.imgURL ? <img src={props.imgURL} className='col-xs-10'/> : '';
 	let component;
 	if (props.fromMe) {
-		component = <Col className={`message${smsFromMe} media-heading pull-right flex-col`} xsOffset={3} >
+		component = <Col className={`message${smsFromMe} media-heading pull-right d-flex flex-col`} xsOffset={3} >
 			<strong className='progress-bar'>{props.username}</strong>
 			<div className={' flex-ali-end space-betw'}>
 				{img}
@@ -16,7 +16,7 @@ const Message = (props) => {
 			</div>
 		</Col>;
 	} else {
-		component = <Col className='message media-heading m-r-25pr pull-left flex-col'>
+		component = <Col className='message media-heading m-r-25pr pull-left d-flex flex-col'>
 			<strong className='progress-bar'>{props.username}</strong>
 			<div className='flex-ali-end space-betw'>
 				{img}
